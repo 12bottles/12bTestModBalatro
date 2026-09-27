@@ -21,8 +21,9 @@ return {
                     }
                 }
             },
+
             j_dozenb_joker3 = {
-                name = 'Joker3',
+                name = 'The Joker3',
                 text = {
                     {
                         '{C:red}+#1#{} Discards when held'
@@ -32,7 +33,36 @@ return {
                         'end of round'
                     }
                 }
+            },
+
+            j_dozenb_dozen = {
+                name = 'Dozen Joker',
+                text = {
+                    {
+                        '{C:money}+$#1#{} at end of round'
+                    }, {
+                        'Earn {C:money}$#2#{} extra for',
+                        'every {C:attention}#3#{C:inactive} [#4#]{} cards',
+                        'discarded.'
+                    }
+                },
             }
         }
     }
 }
+
+--[===[ j_dozenb_dozen = {
+                name = 'Dozen Joker',
+                text = {
+                    {
+                        '{C:money}+#1#{} at end of round'
+                    }, {
+                        'Earn {C:money}$#2#{} extra for',
+                        'every {C:attention}#3#{C:inactive} [#4#]{} cards',
+                        'discarded.'
+                    }
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
+                },
+            } --]===]
