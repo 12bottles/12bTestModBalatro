@@ -1,0 +1,9 @@
+{
+    "id": "12bTestMod",
+    "name": "12Bottles Test Mod",
+    "author": ["12Bottles"],
+    "description": "A basic test mod, for learning purpouses",
+    "prefix": "dozenb",
+    "main_file": "main.lua",
+    "version": "0.0.1"
+}
