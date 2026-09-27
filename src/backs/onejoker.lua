@@ -3,9 +3,9 @@ SMODS.Back {
     atlas = "12b",
     pos = { x = 2, y = 3 },
     config = { 
-        joker_ids = {"j_mime"},
-        extra_joker_slot = 1,
-        joker_names = "Mime"
+        joker_ids = {"j_marble", "j_stone"},
+        extra_joker_slot = 2,
+        joker_names = "Marble Joker + Stone Joker",
     },
     loc_vars = function(self, info_queue, back)
         return { 

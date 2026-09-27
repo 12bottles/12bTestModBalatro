@@ -77,6 +77,20 @@ return {
                         'discarded.'
                     }
                 },
+            },
+
+            j_dozenb_rock = {
+                name = 'Medusa',
+                text = {
+                    {
+                        '{X:mult,C:white} X#3# {} Mult for each',
+                        '{C:attention}Stone{} card in hand.'
+                    }, {
+                        'Gains {X:mult,C:white} X#2# {} Mult for',
+                        'each {C:attention}Stone{} card in',
+                        'your full deck'
+                    }
+                },
             }
         }
     }
