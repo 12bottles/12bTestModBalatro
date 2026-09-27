@@ -18,6 +18,14 @@ return {
                         "Has the effects of the",
                         "Plasma deck."
                 },
+            },
+
+            b_dozenb_paintedplus = {
+                name = "Painted+ Deck",
+                text = {
+                        "{C:money}+#1#{} hand size every",
+                        "Ante."
+                },
             }
         },
 
