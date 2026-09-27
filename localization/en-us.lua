@@ -1,5 +1,28 @@
 return {
     descriptions = {
+        Back = {
+            b_dozenb_onejoker = {
+                name = "One Joker Deck",
+                text = {"Start with a {C:clubs}[#3#]{}.",
+                        "Gives one {C:clubs}[#3#]{}",
+                        "every Ante."
+                },
+            },
+
+            b_dozenb_onejokerplasma = {
+                name = "One Joker Deck [Plasma]",
+                text = {
+                        "Start with a {C:clubs}[#3#]{}.",
+                        "Gives one {C:clubs}[#3#]{}",
+                        "every Ante.",
+                        "Has the effects of the",
+                        "Plasma deck."
+                },
+            }
+        },
+
+
+
         Joker = {
             j_dozenb_joker1 = {
                 name = 'The Joker1',

@@ -23,4 +23,9 @@ for _, file in ipairs(jokers_src) do
     assert(SMODS.load_file("src/jokers/" .. file))()
 end
 
+local backs_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/backs")
+for _, file in ipairs(backs_src) do
+    assert(SMODS.load_file("src/backs/" .. file))()
+end
+
 --#endregion
