@@ -91,6 +91,22 @@ return {
                         'your full deck'
                     }
                 },
+            },
+
+
+            j_dozenb_joker4 = {
+                name = 'Joker4',
+                text = {
+                    'All shop boosters',
+                    'are {C:money}free'
+                }
+            },
+            j_dozenb_joker5 = {
+                name = 'Joker5',
+                text = {
+                    'All shop items',
+                    'cost {C:money}half{} as much'
+                }
             }
         }
     }
