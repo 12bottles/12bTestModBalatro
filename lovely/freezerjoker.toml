@@ -1,0 +1,580 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+# Freezer joker check was at the top of calculate_joker, but
+# has been moved since calculate_joker was called very, very often.
+# Looks worse, but performs better probably.
+
+# Popcorn freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.mult - self.ability.extra <= 0 then 
+    SMODS.destroy_cards(self, nil, nil, true)
+    return {
+        message = localize('k_eaten_ex'),
+        colour = G.C.RED
+    }
+else
+    SMODS.scale_card(self, {
+        ref_table = self.ability,
+        ref_value = "mult",
+        scalar_value = "extra",
+        message_key = 'a_mult_minus',
+        colour = G.C.MULT,
+        operation = '-'
+    })
+    return nil, true
+end
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_joker = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    if self.ability.mult - self.ability.extra <= 0 then 
+        SMODS.destroy_cards(self, nil, nil, true)
+        return {
+            message = localize('k_eaten_ex'),
+            colour = G.C.RED
+        }
+    else
+        SMODS.scale_card(self, {
+            ref_table = self.ability,
+            ref_value = "mult",
+            scalar_value = "extra",
+            message_key = 'a_mult_minus',
+            colour = G.C.MULT,
+            operation = '-'
+        })
+        return nil, true
+    end
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+
+
+# Gros Michel + Cavendish freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if SMODS.pseudorandom_probability(self, self.ability.name == 'Cavendish' and 'cavendish' or 'gros_michel', 1, self.ability.extra.odds) then 
+    SMODS.destroy_cards(self, nil, nil, true)
+    if self.ability.name == 'Gros Michel' then G.GAME.pool_flags.gros_michel_extinct = true end
+    return {
+        message = localize('k_extinct_ex')
+    }
+else
+    return {
+        message = localize('k_safe_ex')
+    }
+end
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    if SMODS.pseudorandom_probability(self, self.ability.name == 'Cavendish' and 'cavendish' or 'gros_michel', 1, self.ability.extra.odds) then 
+        SMODS.destroy_cards(self, nil, nil, true)
+        if self.ability.name == 'Gros Michel' then G.GAME.pool_flags.gros_michel_extinct = true end
+        return {
+            message = localize('k_extinct_ex')
+        }
+    else
+        return {
+            message = localize('k_safe_ex')
+        }
+    end
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+
+
+# Egg freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+SMODS.scale_card(self, {
+    ref_table = self.ability,
+    ref_value = "extra_value",
+    scalar_value = "extra",
+    scaling_message = {
+        message = localize('k_val_up'),
+        colour = G.C.MONEY
+    }
+})
+self:set_cost()
+return nil, true
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    SMODS.scale_card(self, {
+        ref_table = self.ability,
+        ref_value = "extra_value",
+        scalar_value = "extra",
+        scaling_message = {
+            message = localize('k_val_up'),
+            colour = G.C.MONEY
+        }
+    })
+    self:set_cost()
+    return nil, true
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+
+
+# Ice Cream freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.extra.chips - self.ability.extra.chip_mod <= 0 then 
+    SMODS.destroy_cards(self, nil, nil, true)
+    return {
+        message = localize('k_melted_ex'),
+        colour = G.C.CHIPS
+    }
+else
+    SMODS.scale_card(self, {
+        ref_table = self.ability.extra,
+        ref_value = "chips",
+        scalar_value = "chip_mod",
+        operation = "-",
+        message_key = 'a_chips_minus'
+    })
+    return nil, true
+end
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    if self.ability.extra.chips - self.ability.extra.chip_mod <= 0 then 
+        SMODS.destroy_cards(self, nil, nil, true)
+        return {
+            message = localize('k_melted_ex'),
+            colour = G.C.CHIPS
+        }
+    else
+        SMODS.scale_card(self, {
+            ref_table = self.ability.extra,
+            ref_value = "chips",
+            scalar_value = "chip_mod",
+            operation = "-",
+            message_key = 'a_chips_minus'
+        })
+        return nil, true
+    end
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+# Bean freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.extra.h_size - self.ability.extra.h_mod <= 0 then 
+    SMODS.destroy_cards(self, nil, nil, true)
+    return {
+        card = self,
+        message = localize('k_eaten_ex'),
+        colour = G.C.FILTER
+    }
+else
+    SMODS.scale_card(self, {
+        ref_table = self.ability.extra,
+        ref_value = "h_size",
+        scalar_value = "h_mod",
+        message_key = 'a_handsize_minus',
+        operation = function(ref_table, ref_value, initial, change)
+            ref_table[ref_value] = initial - change
+            G.hand:change_size(- change)
+        end
+    })
+    return nil, true
+    end
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    if self.ability.extra.h_size - self.ability.extra.h_mod <= 0 then 
+        SMODS.destroy_cards(self, nil, nil, true)
+        return {
+            card = self,
+            message = localize('k_eaten_ex'),
+            colour = G.C.FILTER
+        }
+    else
+        SMODS.scale_card(self, {
+            ref_table = self.ability.extra,
+            ref_value = "h_size",
+            scalar_value = "h_mod",
+            message_key = 'a_handsize_minus',
+            operation = function(ref_table, ref_value, initial, change)
+                ref_table[ref_value] = initial - change
+                G.hand:change_size(- change)
+            end
+        })
+        return nil, true
+    end
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+
+
+
+
+
+
+# Ramen freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.x_mult - self.ability.extra <= 1 then 
+    SMODS.destroy_cards(self, nil, nil, true)
+    return {
+        card = self,
+        message = localize('k_eaten_ex'),
+        colour = G.C.FILTER
+    }
+else
+    SMODS.scale_card(self, {
+        ref_table = self.ability,
+        ref_value = "x_mult",
+        scalar_value = "extra",
+        operation = "-",
+        message_key = 'a_xmult_minus',
+        colour = G.C.RED,
+        message_delay = 0.2,
+    })
+    return nil, true
+end
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    if self.ability.x_mult - self.ability.extra <= 1 then 
+        SMODS.destroy_cards(self, nil, nil, true)
+        return {
+            card = self,
+            message = localize('k_eaten_ex'),
+            colour = G.C.FILTER
+        }
+    else
+        SMODS.scale_card(self, {
+            ref_table = self.ability,
+            ref_value = "x_mult",
+            scalar_value = "extra",
+            operation = "-",
+            message_key = 'a_xmult_minus',
+            colour = G.C.RED,
+            message_delay = 0.2,
+        })
+        return nil, true
+    end
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+# Seltzer freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+if self.ability.extra - 1 <= 0 then 
+    SMODS.destroy_cards(self, nil, nil, true)
+    return {
+        message = localize('k_drank_ex'),
+        colour = G.C.FILTER
+    }
+else
+    self.ability.extra = self.ability.extra - 1
+    return {
+        message = self.ability.extra..'',
+        colour = G.C.FILTER
+    }
+end
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    if self.ability.extra - 1 <= 0 then 
+        SMODS.destroy_cards(self, nil, nil, true)
+        return {
+            message = localize('k_drank_ex'),
+            colour = G.C.FILTER
+        }
+    else
+        self.ability.extra = self.ability.extra - 1
+        return {
+            message = self.ability.extra..'',
+            colour = G.C.FILTER
+        }
+    end
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+
+
+
+
+
+# Invisible Joker freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+self.ability.invis_rounds = self.ability.invis_rounds + 1
+if self.ability.invis_rounds == self.ability.extra then 
+    local eval = function(card) return not card.REMOVED end
+    juice_card_until(self, eval, true)
+end
+return {
+    message = (self.ability.invis_rounds < self.ability.extra) and (self.ability.invis_rounds..'/'..self.ability.extra) or localize('k_active_ex'),
+    colour = G.C.FILTER
+}
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    self.ability.invis_rounds = self.ability.invis_rounds + 1
+    if self.ability.invis_rounds == self.ability.extra then 
+        local eval = function(card) return not card.REMOVED end
+        juice_card_until(self, eval, true)
+    end
+    return {
+        message = (self.ability.invis_rounds < self.ability.extra) and (self.ability.invis_rounds..'/'..self.ability.extra) or localize('k_active_ex'),
+        colour = G.C.FILTER
+    }
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+
+
+
+
+# Burnt Joker freezer check
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+local text,disp_text = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+card_eval_status_text(context_blueprint_card or self, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+level_up_hand(context.blueprint_card or self, text, nil, 1)
+return nil, true
+'''
+position = 'at'
+payload = '''
+-- 12b code start
+
+print("Freezer check")
+
+local has_freezer = false
+if G.jokers and G.jokers.cards then
+    for _, card in ipairs(G.jokers.cards) do
+        if card.config.center.key == "j_dozenb_freezer" then
+            has_freezer = true
+            break
+        end
+    end
+end 
+
+-- 12b code end
+
+if has_freezer == false then
+    local text,disp_text = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+    card_eval_status_text(context_blueprint_card or self, 'extra', nil, nil, nil, {message = localize('k_upgrade_ex')})
+    level_up_hand(context.blueprint_card or self, text, nil, 1)
+    return nil, true
+else
+    return {
+            message = 'Frozen!',
+            colour = G.C.BLUE
+        }
+end
+'''
+match_indent = true
+

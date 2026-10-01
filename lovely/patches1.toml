@@ -75,7 +75,7 @@ payload = '''
 
 -- 12B CODE HERE !!
 
-ONEJOKER_EVERY_ANTE = true
+ONEJOKER_EVERY_ANTE = false
 set_joker_limit = false
 
 -- 12B CODE ENDS !!

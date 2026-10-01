@@ -2,7 +2,7 @@ return {
     descriptions = {
         Back = {
             b_dozenb_onejoker = {
-                name = "One Joker Deck",
+                name = "One Joker Deck [NOW BASE MOD EFFECT]",
                 text = {"Start with a {C:clubs}[#3#]{}.",
                         "Gives one {C:clubs}[#3#]{}",
                         "every Ante."
@@ -10,7 +10,7 @@ return {
             },
 
             b_dozenb_onejokerplasma = {
-                name = "One Joker Deck [Plasma]",
+                name = "One Joker Deck [Plasma] [NOW BASE MOD EFFECT]",
                 text = {
                         "Start with a {C:clubs}[#3#]{}.",
                         "Gives one {C:clubs}[#3#]{}",
@@ -98,16 +98,37 @@ return {
                 name = 'Joker4',
                 text = {
                     'All shop boosters',
-                    'are {C:money}free'
+                    'are {C:money}freeP{}'
                 }
             },
+
+
             j_dozenb_joker5 = {
                 name = 'Joker5',
                 text = {
                     'All shop items',
                     'cost {C:money}half{} as much'
                 }
-            }
+            },
+            
+            j_dozenb_astromancer = {
+                name = 'Astromancer',
+                text = {
+                    'Has a {C:green}#1# in #2#{} chance to',
+                    'give the planet card for your most played',
+                    'hand at end of round'
+                }
+            },
+            
+            j_dozenb_freezer = {
+                name = 'Frozen Joker',
+                text = {
+                    'Freezes Food Jokers.',
+                    'Affects jokers that dont like',
+                    'the cold, too.'
+                }
+            },
+            
         }
     }
 }
