@@ -5,6 +5,6 @@ SMODS.Joker {
         x = 2,
         y = 0
     },
-    rarity = 2,
-    cost = 10,
+    rarity = 3,
+    cost = 8,
 }
