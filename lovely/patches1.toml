@@ -36,13 +36,15 @@ local no_jokers_to_add = # (jokers_to_add)
 
 if ONEJOKER_EVERY_ANTE == true then
 
+
     if G.GAME.round_resets.blind_states.Small == 'Select' then
+
+    G.jokers.config.card_limit = G.jokers.config.card_limit + no_jokers_to_add
+
         if set_joker_limit == false then
             G.jokers.config.card_limit = no_jokers_to_add
             set_joker_limit = true
         end
-
-        G.jokers.config.card_limit = G.jokers.config.card_limit + no_jokers_to_add
 
         for _, joker_key in ipairs(jokers_to_add) do
             SMODS.add_card({ key = joker_key })
