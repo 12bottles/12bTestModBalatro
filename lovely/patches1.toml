@@ -14,3 +14,69 @@ payload = '''
 SMODS.calculate_context({create_shop_booster = true, booster = card})
 '''
 match_indent = true
+
+
+
+# Code for "One Joker every Ante", built into every deck
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+for i = 1, #G.GAME.tags do
+    if G.GAME.tags[i]:apply_to_run({type = 'new_blind_choice'}) then break end
+end
+'''
+position = 'after'
+payload = '''
+
+-- 12B CODE HERE !!
+
+local jokers_to_add = {"j_ancient", "j_sock_and_buskin"}
+local no_jokers_to_add = # (jokers_to_add)
+
+if ONEJOKER_EVERY_ANTE == true then
+
+    if G.GAME.round_resets.blind_states.Small == 'Select' then
+        if set_joker_limit == false then
+            G.jokers.config.card_limit = no_jokers_to_add
+            set_joker_limit = true
+        end
+
+        G.jokers.config.card_limit = G.jokers.config.card_limit + no_jokers_to_add
+
+        for _, joker_key in ipairs(jokers_to_add) do
+            SMODS.add_card({ key = joker_key })
+        end
+
+    end
+
+end
+
+-- 12B CODE ENDS !!
+
+'''
+match_indent = true
+
+
+
+# "One Joker every Ante" code, needs to be rewritten when in-game UI is made.
+# Check the "Pointer" card in Cryptid to see how that works maybe?
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+G.STATE_COMPLETE = false
+G.RESET_BLIND_STATES = true
+'''
+position = 'after'
+payload = '''
+
+-- 12B CODE HERE !!
+
+ONEJOKER_EVERY_ANTE = true
+set_joker_limit = false
+
+-- 12B CODE ENDS !!
+
+'''
+match_indent = true
