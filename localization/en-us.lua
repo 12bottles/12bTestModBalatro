@@ -137,6 +137,15 @@ return {
                     'sets the score to that value, and resets.'
                 }
             },
+
+            j_dozenb_hardhitter = {
+                name = 'Hard Hitter',
+                text = {
+                    '{X:mult,C:white} X#1# {} Mult on first hand played',
+                    'with {C:yellow}5{} or more cards {C:inactive}[#2#]{}.',
+                    'Resets at end of round.'
+                }
+            },
             
         }
     }
