@@ -128,6 +128,15 @@ return {
                     'the cold, too.'
                 }
             },
+
+            j_dozenb_equalizer = {
+                name = 'Equalizer',
+                text = {
+                    'Stores the value of the highest scoring hand played',
+                    '(currently {C:chips}#1#{}). If the current hand scores less,',
+                    'sets the score to that value, and resets.'
+                }
+            },
             
         }
     }

@@ -10,6 +10,8 @@ SMODS.Joker {
             odds = 2,
         }
     },
+    rarity = 2,
+    cost = 7,
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'dozenb_astromancer')
         return { vars = { numerator, denominator} }
