@@ -1,10 +1,12 @@
 SMODS.Joker {
     key = 'freezer',
-    atlas = 'placeholders',
+    atlas = '12b',
     pos = {
-        x = 2,
+        x = 3,
         y = 0
     },
     rarity = 3,
     cost = 8,
+
+    -- All code in lovely/freezerjoker.toml
 }

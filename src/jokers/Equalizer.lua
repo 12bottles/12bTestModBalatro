@@ -1,9 +1,9 @@
 SMODS.Joker {
     key = 'equalizer',
-    atlas = 'placeholders',
+    atlas = '12b',
     pos = {
-        x = 1,
-        y = 0
+        x = 0,
+        y = 1
     },
     config = {
         extra = {

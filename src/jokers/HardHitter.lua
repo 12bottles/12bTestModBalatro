@@ -1,6 +1,6 @@
 SMODS.Joker {
     key = 'hardhitter',
-    atlas = 'placeholders',
+    atlas = '12b',
     pos = {
         x = 2,
         y = 0
