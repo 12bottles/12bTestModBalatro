@@ -33,7 +33,6 @@ position = 'at'
 payload = '''
 -- 12b code start
 
-print("Freezer check")
 
 local has_freezer = false
 if G.jokers and G.jokers.cards then
@@ -98,7 +97,6 @@ position = 'at'
 payload = '''
 -- 12b code start
 
-print("Freezer check")
 
 local has_freezer = false
 if G.jokers and G.jokers.cards then
@@ -157,7 +155,6 @@ position = 'at'
 payload = '''
 -- 12b code start
 
-print("Freezer check")
 
 local has_freezer = false
 if G.jokers and G.jokers.cards then
@@ -221,7 +218,6 @@ position = 'at'
 payload = '''
 -- 12b code start
 
-print("Freezer check")
 
 local has_freezer = false
 if G.jokers and G.jokers.cards then
@@ -292,7 +288,6 @@ position = 'at'
 payload = '''
 -- 12b code start
 
-print("Freezer check")
 
 local has_freezer = false
 if G.jokers and G.jokers.cards then
@@ -372,7 +367,6 @@ position = 'at'
 payload = '''
 -- 12b code start
 
-print("Freezer check")
 
 local has_freezer = false
 if G.jokers and G.jokers.cards then
