@@ -2,7 +2,7 @@
 version = "1.0.0"
 priority = 0
 
-# Add create_shop_booster context
+# Add create_shop_booster context (from tutorial)
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
@@ -62,7 +62,7 @@ match_indent = true
 
 
 # "One Joker every Ante" code, needs to be rewritten when in-game UI is made.
-# Check the "Pointer" card in Cryptid to see how that works maybe?
+# Check the "Pointer" card in Cryptid to see how that works (menu-wise) maybe?
 [[patches]]
 [patches.pattern]
 target = 'game.lua'

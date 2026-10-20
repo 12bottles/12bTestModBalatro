@@ -9,6 +9,8 @@ SMODS.Joker {
     cost = 6
 }
 
+-- Example of a hook, make own in future
+
 local csc = Card.set_cost
 Card.set_cost = function(self)
     csc(self)
