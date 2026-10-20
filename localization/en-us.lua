@@ -66,6 +66,23 @@ return {
                 }
             },
 
+            j_dozenb_joker4 = {
+                name = 'Joker4',
+                text = {
+                    'All shop boosters',
+                    'are {C:money}freeP{}'
+                }
+            },
+
+
+            j_dozenb_joker5 = {
+                name = 'Joker5',
+                text = {
+                    'All shop items',
+                    'cost {C:money}half{} as much'
+                }
+            },
+
             j_dozenb_dozen = {
                 name = 'Dozen Joker',
                 text = {
@@ -91,24 +108,6 @@ return {
                         'your full deck'
                     }
                 },
-            },
-
-
-            j_dozenb_joker4 = {
-                name = 'Joker4',
-                text = {
-                    'All shop boosters',
-                    'are {C:money}freeP{}'
-                }
-            },
-
-
-            j_dozenb_joker5 = {
-                name = 'Joker5',
-                text = {
-                    'All shop items',
-                    'cost {C:money}half{} as much'
-                }
             },
             
             j_dozenb_astromancer = {
@@ -141,9 +140,27 @@ return {
             j_dozenb_hardhitter = {
                 name = 'Hard Hitter',
                 text = {
-                    '{X:mult,C:white} X#1# {} Mult on first hand played',
+                    '{X:mult,C:white}X#1#{} Mult on first hand played',
                     'with {C:yellow}5{} or more cards {C:inactive}[#2#]{}.',
                     'Resets at end of round.'
+                }
+            },
+
+            j_dozenb_flushedaway = {
+                name = 'Flushed Away',
+                text = {
+                    'Gains {X:mult,C:white}X#2#{} Mult for each',
+                    '{C:attention}Straight Flush{} discarded.',
+                    'Currently {X:mult,C:white}X#1#{}.'
+                }
+            },
+
+            j_dozenb_bigspender = {
+                name = 'Big Spender',
+                text = {
+                    'Gains {C:mult}+#4#{} Mult for every',
+                    '{C:money}$#2#{} {C:inactive}[$#5#]{} spent.',
+                    '{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult){}'
                 }
             },
             
