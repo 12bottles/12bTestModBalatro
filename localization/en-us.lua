@@ -1,5 +1,7 @@
 return {
     descriptions = {
+
+
         Back = {
             b_dozenb_onejoker = {
                 name = "One Joker Deck [NOW BASE MOD EFFECT]",
@@ -20,14 +22,29 @@ return {
                 },
             },
 
+
+
+
             b_dozenb_paintedplus = {
                 name = "Painted+ Deck",
                 text = {
                         "{C:money}+#1#{} hand size every",
                         "Ante."
                 },
+            },
+
+            b_dozenb_perkiodeck = {
+                name = "Perkio Deck",
+                text = {
+                        "Copies a random {C:attention}Joker{}",
+                        "every Ante.",
+                },
             }
         },
+
+
+
+
 
 
 
