@@ -3,12 +3,13 @@ return {
 
 
         Back = {
+
             b_dozenb_onejoker = {
                 name = "One Joker Deck [NOW BASE MOD EFFECT]",
                 text = {"Start with a {C:clubs}[#3#]{}.",
                         "Gives one {C:clubs}[#3#]{}",
                         "every Ante."
-                },
+                }
             },
 
             b_dozenb_onejokerplasma = {
@@ -19,10 +20,8 @@ return {
                         "every Ante.",
                         "Has the effects of the",
                         "Plasma deck."
-                },
+                }
             },
-
-
 
 
             b_dozenb_paintedplus = {
@@ -30,18 +29,17 @@ return {
                 text = {
                         "{C:money}+#1#{} hand size every",
                         "Ante."
-                },
+                }
             },
 
-            b_dozenb_perkiodeck = {
-                name = "Perkio Deck",
+            b_dozenb_perkeodeck = {
+                name = "Perkeo Deck",
                 text = {
                         "Copies a random {C:attention}Joker{}",
                         "every Ante.",
-                },
+                }
             }
         },
-
 
 
 

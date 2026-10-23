@@ -1,5 +1,5 @@
 SMODS.Back {
-    key = "perkiodeck",
+    key = "perkeodeck",
     atlas = "12b",
     pos = { x = 0, y = 2 },
 
